@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_204204) do
+ActiveRecord::Schema.define(version: 2020_05_25_172156) do
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2020_05_24_204204) do
   create_table "user_games", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "game_id", null: false
-    t.integer "num_answered"
-    t.integer "num_correct"
+    t.integer "num_answered", default: 0
+    t.integer "num_correct", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["game_id"], name: "index_user_games_on_game_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_05_24_204204) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.integer "total_points"
+    t.integer "total_points", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
